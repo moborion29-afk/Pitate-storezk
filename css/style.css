@@ -1,113 +1,80 @@
 :root{
   --bg:#050505;
-  --red:#d10000;
-  --red2:#ff2d2d;
-  --glass:rgba(0,0,0,.45);
+/* ===== MENU LATERAL ===== */
+
+.menu{
+
+position:fixed;
+left:-280px;
+top:0;
+width:260px;
+height:100%;
+background:#0b0b0b;
+padding:25px;
+display:flex;
+flex-direction:column;
+gap:18px;
+transition:.35s;
+z-index:5000;
+border-right:2px solid #7a0000;
+
 }
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:Arial,sans-serif;
+.menu.show{
+
+left:0;
+
 }
 
-body{
-  background:var(--bg);
-  color:white;
+.menu-header{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+font-size:22px;
+font-weight:bold;
+color:#ff2d2d;
+margin-bottom:20px;
+
 }
 
-.hero{
-  position:relative;
-  min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  overflow:hidden;
+.menu a{
+
+text-decoration:none;
+color:white;
+padding:12px;
+border-radius:10px;
+transition:.25s;
+
 }
 
-.hero img{
-  position:absolute;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  filter:brightness(.35);
+.menu a:hover{
+
+background:#d10000;
+
 }
 
-.overlay{
-  position:absolute;
-  inset:0;
-  background:linear-gradient(rgba(0,0,0,.25),rgba(0,0,0,.9));
+.menu-btn{
+
+position:fixed;
+top:18px;
+left:18px;
+width:50px;
+height:50px;
+border:none;
+border-radius:12px;
+background:#d10000;
+color:white;
+font-size:24px;
+z-index:6000;
+
 }
 
-.flash{
-  position:absolute;
-  inset:0;
-  background:
-  radial-gradient(circle at 20% 20%,rgba(255,0,0,.20),transparent 35%),
-  radial-gradient(circle at 80% 40%,rgba(255,0,0,.15),transparent 30%);
-  animation:pulse 2.5s infinite;
-}
+.menu-header button{
 
-@keyframes pulse{
-  50%{
-    opacity:.4;
-    transform:scale(1.05);
-  }
-}
+background:none;
+border:none;
+color:white;
+font-size:20px;
 
-.box{
-  position:relative;
-  z-index:2;
-  width:92%;
-  max-width:390px;
-  background:var(--glass);
-  backdrop-filter:blur(10px);
-  border:1px solid rgba(255,0,0,.35);
-  border-radius:24px;
-  padding:30px;
-  text-align:center;
-}
-
-.logo{
-  font-size:45px;
-  font-weight:bold;
-  color:var(--red2);
-  text-shadow:0 0 20px red;
-  margin-bottom:12px;
-}
-
-.btn{
-  display:block;
-  padding:16px;
-  margin:12px 0;
-  border-radius:14px;
-  text-decoration:none;
-  color:white;
-  font-size:20px;
-  font-weight:bold;
-}
-
-.red{
-  background:var(--red);
-}
-
-.out{
-  border:2px solid var(--red2);
-}
-
-.out:hover{
-  background:var(--red2);
-}
-
-.tesouros{
-  margin-top:18px;
-  color:#ffaaaa;
-  animation:pisca 1.5s infinite;
-}
-
-@keyframes pisca{
-  50%{
-    opacity:.5;
-  }
 }
