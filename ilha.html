@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>Ilha dos Imperadores</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+
+body{
+margin:0;
+background:#050505;
+color:white;
+overflow:hidden;
+}
+
+.cenario{
+
+position:relative;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+overflow:hidden;
+
+background:
+linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.9)),
+radial-gradient(circle at top,#550000,#050505);
+
+}
+
+.lua{
+
+position:absolute;
+top:40px;
+right:40px;
+width:120px;
+height:120px;
+background:#ff2d2d;
+border-radius:50%;
+box-shadow:0 0 40px red;
+animation:lua 4s infinite alternate;
+
+}
+
+@keyframes lua{
+
+to{
+transform:scale(1.05);
+}
+
+}
+
+.mar{
+
+position:absolute;
+bottom:0;
+width:100%;
+height:120px;
+background:
+repeating-linear-gradient(
+90deg,
+#001a33 0 25px,
+#00284d 25px 50px
+);
+
+animation:ondas 3s infinite linear;
+
+}
+
+@keyframes ondas{
+
+to{
+background-position:120px 0;
+}
+
+}
+
+.navio{
+
+position:absolute;
+bottom:80px;
+font-size:70px;
+animation:balancar 3s infinite ease-in-out;
+
+}
+
+@keyframes balancar{
+
+50%{
+transform:rotate(3deg) translateY(-8px);
+}
+
+}
+
+.box{
+
+position:relative;
+z-index:5;
+width:90%;
+max-width:420px;
+background:rgba(0,0,0,.45);
+backdrop-filter:blur(8px);
+padding:28px;
+border-radius:24px;
+border:1px solid rgba(255,0,0,.35);
+
+}
+
+.box h1{
+
+font-size:38px;
+color:#ff2d2d;
+
+}
+
+.tesouro{
+
+margin-top:20px;
+padding:20px;
+border-radius:18px;
+background:#111;
+border:2px solid gold;
+animation:ouro 2s infinite;
+
+}
+
+@keyframes ouro{
+
+50%{
+box-shadow:0 0 25px gold;
+}
+
+}
+
+.voltar{
+
+display:inline-block;
+margin-top:25px;
+padding:14px 24px;
+background:#d10000;
+border-radius:14px;
+text-decoration:none;
+color:white;
+font-weight:bold;
+
+}
+
+.lanterna{
+
+position:absolute;
+font-size:34px;
+animation:piscando 2s infinite;
+
+}
+
+.l1{left:12%;top:25%;}
+.l2{right:12%;top:32%;}
+
+@keyframes piscando{
+
+50%{
+opacity:.5;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<section class="cenario">
+
+<div class="lua"></div>
+
+<div class="lanterna l1">🏮</div>
+<div class="lanterna l2">🏮</div>
+
+<div class="navio">🚢</div>
+
+<div class="box">
+
+<h1>🏝️ Ilha dos Imperadores</h1>
+
+<p>Você encontrou o esconderijo secreto da Pirate Store.</p>
+
+<div class="tesouro">
+
+<h2>👑 Tesouro Supremo</h2>
+
+<p>Conta Lv.2600</p>
+
+<p>Ghoul V4 • Kitsune • Leopard</p>
+
+<h2 style="color:gold;">R$149,90</h2>
+
+</div>
+
+<a href="index.html" class="voltar">
+
+⚓ Voltar ao Porto
+
+</a>
+
+</div>
+
+<div class="mar"></div>
+
+</section>
+
+</body>
+</html>
