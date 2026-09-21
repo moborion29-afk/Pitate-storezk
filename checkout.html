@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout - Pirate Store</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+
+body{
+background:linear-gradient(#120000,#050505);
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:20px;
+}
+
+.card{
+width:100%;
+max-width:420px;
+background:rgba(0,0,0,.45);
+backdrop-filter:blur(10px);
+border:1px solid rgba(255,0,0,.35);
+border-radius:25px;
+padding:30px;
+text-align:center;
+}
+
+.bau{
+font-size:120px;
+cursor:pointer;
+transition:.5s;
+animation:flutuar 3s infinite;
+}
+
+.bau.aberto{
+transform:scale(1.15) rotate(-5deg);
+filter:drop-shadow(0 0 25px gold);
+}
+
+@keyframes flutuar{
+50%{transform:translateY(-8px);}
+}
+
+#conteudo{
+display:none;
+margin-top:25px;
+}
+
+.pix{
+background:#111;
+padding:15px;
+border-radius:15px;
+word-break:break-all;
+margin:15px 0;
+}
+
+.btn{
+display:block;
+padding:16px;
+margin-top:15px;
+border-radius:14px;
+text-decoration:none;
+font-size:20px;
+font-weight:bold;
+}
+
+.red{
+background:#d10000;
+color:white;
+}
+
+.out{
+border:2px solid #ff2d2d;
+color:white;
+}
+
+.brilho{
+position:fixed;
+inset:0;
+pointer-events:none;
+background:radial-gradient(circle,rgba(255,215,0,.15),transparent 60%);
+opacity:0;
+transition:.5s;
+}
+
+.brilho.on{
+opacity:1;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="brilho" id="brilho"></div>
+
+<div class="card">
+
+<h1>⚓ Baú do Tesouro</h1>
+
+<p>Toque no baú para revelar o pagamento.</p>
+
+<div id="bau" class="bau">
+🪙
+</div>
+
+<div id="conteudo">
+
+<h2>Tesouro desbloqueado!</h2>
+
+<p>Pagamento via Banco Inter</p>
+
+<div class="pix">
+
+SUA_CHAVE_PIX_AQUI
+
+</div>
+
+<a class="btn out" href="#">
+Copiar chave Pix
+</a>
+
+<a class="btn red"
+href="https://wa.me/555198379743?text=Já paguei a conta da Pirate Store.">
+Já paguei
+</a>
+
+</div>
+
+</div>
+
+<script>
+
+const bau=document.getElementById("bau");
+const conteudo=document.getElementById("conteudo");
+const brilho=document.getElementById("brilho");
+
+bau.onclick=()=>{
+
+bau.classList.add("aberto");
+brilho.classList.add("on");
+
+setTimeout(()=>{
+conteudo.style.display="block";
+},500);
+
+}
+
+</script>
+
+</body>
+</html>
