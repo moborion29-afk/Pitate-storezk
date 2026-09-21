@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pirate Store</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#050505;
+color:white;
+overflow-x:hidden;
+}
+
+/* Fundo animado */
+.hero{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:20px;
+position:relative;
+background:
+linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.85)),
+url("https://images.unsplash.com/photo-1517404215738-15263e9f9178?q=80&w=1400&auto=format&fit=crop");
+background-size:cover;
+background-position:center;
+}
+
+.hero::before{
+content:"";
+position:absolute;
+inset:0;
+background:radial-gradient(circle at center, rgba(255,0,0,.15), transparent 60%);
+animation:pulse 4s infinite;
+}
+
+@keyframes pulse{
+50%{opacity:.4}
+}
+
+.box{
+position:relative;
+z-index:2;
+max-width:400px;
+text-align:center;
+background:rgba(0,0,0,.45);
+backdrop-filter:blur(6px);
+padding:30px;
+border:1px solid rgba(255,0,0,.4);
+border-radius:22px;
+}
+
+.logo{
+font-size:46px;
+font-weight:bold;
+color:#ff1f1f;
+text-shadow:0 0 18px red;
+margin-bottom:10px;
+}
+
+.sub{
+font-size:18px;
+line-height:1.6;
+margin-bottom:30px;
+}
+
+.btn{
+display:block;
+padding:15px;
+margin:12px 0;
+border-radius:12px;
+text-decoration:none;
+font-weight:bold;
+transition:.25s;
+}
+
+.red{
+background:#d60000;
+color:white;
+}
+
+.red:hover{
+transform:scale(1.03);
+}
+
+.out{
+border:2px solid #ff2d2d;
+color:white;
+}
+
+.out:hover{
+background:#ff2d2d;
+}
+
+footer{
+padding:18px;
+text-align:center;
+color:#bbb;
+background:#090909;
+}
+</style>
+</head>
+
+<body>
+
+<section class="hero">
+
+<div class="box">
+
+<div class="logo">PIRATE STORE</div>
+
+<p class="sub">
+Obrigado por participar da nossa jornada no rumo de venda de contas.
+</p>
+
+<a class="btn red" href="https://wa.me/55SEUNUMERO">
+🏴‍☠️ Fale Conosco
+</a>
+
+<a class="btn out" href="#contas">
+⚓ Ver Contas
+</a>
+
+</div>
+
+</section>
+
+<section id="contas" style="padding:35px">
+
+<h2 style="text-align:center;margin-bottom:25px;color:#ff2d2d">
+Contas Disponíveis
+</h2>
+
+<div style="
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:20px;
+max-width:900px;
+margin:auto;
+">
+
+<div style="background:#111;border-radius:18px;overflow:hidden;border:1px solid #222">
+
+<div style="
+height:220px;
+background:linear-gradient(135deg,#450000,#b30000);
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:60px;
+">
+🏴‍☠️
+</div>
+
+<div style="padding:20px">
+
+<h3>Conta Lv.2600</h3>
+
+<p style="margin:8px 0;color:#ccc">
+Ghoul V4 • Kitsune • Leopard
+</p>
+
+<h2 style="color:#ff2d2d">
+R$ 149,90
+</h2>
+
+<a href="https://wa.me/55SEUNUMERO"
+style="
+display:block;
+text-align:center;
+margin-top:18px;
+padding:14px;
+background:#d60000;
+color:white;
+border-radius:10px;
+text-decoration:none;
+font-weight:bold;
+">
+Comprar
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<footer>
+
+Pirate Store • Blox Fruits • Pix Banco Inter
+
+</footer>
+
+</body>
+</html>
