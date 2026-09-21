@@ -1,9 +1,155 @@
 :root{
-  --bg:#050505;
-/* ===== MENU LATERAL ===== */
+--red:#d10000;
+--red2:#ff2d2d;
+--bg:#050505;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:var(--bg);
+color:white;
+overflow-x:hidden;
+}
+
+/* HERO */
+
+.hero{
+position:relative;
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+overflow:hidden;
+}
+
+.bg{
+position:absolute;
+inset:0;
+background:
+linear-gradient(rgba(0,0,0,.35),rgba(0,0,0,.88)),
+url("../assets/luffy-bg.webp");
+background-size:cover;
+background-position:center;
+filter:brightness(.55);
+}
+
+/* CHUVA */
+
+.rain{
+position:absolute;
+inset:0;
+pointer-events:none;
+overflow:hidden;
+}
+
+.drop{
+position:absolute;
+top:-20px;
+width:2px;
+height:20px;
+background:rgba(255,70,70,.8);
+animation:rain linear infinite;
+}
+
+@keyframes rain{
+100%{
+transform:translateY(110vh);
+}
+}
+
+/* BRASAS */
+
+.embers{
+position:absolute;
+inset:0;
+overflow:hidden;
+}
+
+.embers span{
+position:absolute;
+bottom:-20px;
+width:6px;
+height:6px;
+background:#ff4d00;
+border-radius:50%;
+animation:subir linear infinite;
+}
+
+@keyframes subir{
+100%{
+transform:translateY(-110vh);
+opacity:0;
+}
+}
+
+/* RELÂMPAGO */
+
+.flash{
+position:absolute;
+inset:0;
+background:
+radial-gradient(circle at 20% 20%,rgba(255,0,0,.25),transparent 35%),
+radial-gradient(circle at 80% 35%,rgba(255,0,0,.18),transparent 30%);
+animation:raio 2.5s infinite;
+}
+
+@keyframes raio{
+50%{opacity:.35;}
+}
+
+/* CARD */
+
+.box{
+position:relative;
+z-index:5;
+width:90%;
+max-width:390px;
+padding:30px;
+background:rgba(0,0,0,.42);
+backdrop-filter:blur(10px);
+border-radius:24px;
+border:1px solid rgba(255,0,0,.35);
+text-align:center;
+}
+
+.logo{
+font-size:42px;
+font-weight:bold;
+color:#ff2d2d;
+text-shadow:0 0 20px red;
+animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+to{text-shadow:0 0 35px red;}
+}
+
+.btn{
+display:block;
+padding:16px;
+margin:12px 0;
+border-radius:14px;
+text-decoration:none;
+color:white;
+font-weight:bold;
+}
+
+.red{background:#d10000;}
+.out{border:2px solid #ff2d2d;}
+
+.btn:hover{
+transform:scale(1.03);
+}
+
+/* MENU */
 
 .menu{
-
 position:fixed;
 left:-280px;
 top:0;
@@ -15,66 +161,111 @@ display:flex;
 flex-direction:column;
 gap:18px;
 transition:.35s;
-z-index:5000;
+z-index:6000;
 border-right:2px solid #7a0000;
-
 }
 
-.menu.show{
-
-left:0;
-
-}
+.menu.show{left:0;}
 
 .menu-header{
-
 display:flex;
 justify-content:space-between;
 align-items:center;
 font-size:22px;
-font-weight:bold;
 color:#ff2d2d;
 margin-bottom:20px;
-
 }
 
 .menu a{
-
 text-decoration:none;
 color:white;
 padding:12px;
 border-radius:10px;
-transition:.25s;
-
 }
 
 .menu a:hover{
-
 background:#d10000;
-
 }
 
 .menu-btn{
-
 position:fixed;
-top:18px;
-left:18px;
+top:15px;
+left:15px;
 width:50px;
 height:50px;
-border:none;
-border-radius:12px;
 background:#d10000;
+border:none;
 color:white;
 font-size:24px;
-z-index:6000;
-
+border-radius:12px;
+z-index:7000;
+cursor:pointer;
 }
 
-.menu-header button{
+.topbar{
+position:fixed;
+top:0;
+left:0;
+right:0;
+height:60px;
+display:flex;
+justify-content:center;
+align-items:center;
+background:rgba(0,0,0,.35);
+backdrop-filter:blur(8px);
+z-index:5000;
+}
 
-background:none;
-border:none;
-color:white;
-font-size:20px;
+.topbar span{
+color:#ff2d2d;
+font-weight:bold;
+letter-spacing:2px;
+}
 
+/* BANNER */
+
+.banner{
+position:absolute;
+top:80px;
+left:50%;
+transform:translateX(-50%);
+width:92%;
+max-width:500px;
+height:120px;
+border-radius:20px;
+overflow:hidden;
+z-index:5;
+background:rgba(0,0,0,.45);
+backdrop-filter:blur(8px);
+border:1px solid rgba(255,0,0,.35);
+}
+
+.slide{
+position:absolute;
+inset:0;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+opacity:0;
+transition:.8s;
+padding:20px;
+text-align:center;
+}
+
+.slide.active{opacity:1;}
+
+.slide h2{
+color:#ff2d2d;
+}
+
+/* BÚSSOLA */
+
+.compass{
+position:fixed;
+bottom:18px;
+left:18px;
+font-size:34px;
+cursor:pointer;
+z-index:100;
 }
