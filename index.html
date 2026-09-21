@@ -13,8 +13,9 @@
 body{
 margin:0;
 background:#050505;
-color:white;
+font-family:Arial,sans-serif;
 overflow:hidden;
+color:white;
 }
 
 /* INTRO */
@@ -42,16 +43,114 @@ animation:girar 2s ease;
 }
 
 @keyframes girar{
-0%{transform:scale(.5) rotate(-180deg);opacity:0;}
-100%{transform:scale(1) rotate(0);opacity:1;}
+0%{
+transform:scale(.5) rotate(-180deg);
+opacity:0;
+}
+100%{
+transform:scale(1) rotate(0);
+opacity:1;
+}
 }
 
 .intro-text{
-margin-top:20px;
+margin-top:18px;
 font-size:30px;
 font-weight:bold;
 color:#ff2d2d;
 text-shadow:0 0 20px red;
+}
+
+/* MENU */
+
+.menu{
+
+position:fixed;
+left:-280px;
+top:0;
+width:260px;
+height:100%;
+background:#0b0b0b;
+padding:25px;
+display:flex;
+flex-direction:column;
+gap:18px;
+transition:.35s;
+z-index:6000;
+border-right:2px solid #7a0000;
+
+}
+
+.menu.show{
+left:0;
+}
+
+.menu-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+font-size:22px;
+font-weight:bold;
+color:#ff2d2d;
+margin-bottom:20px;
+}
+
+.menu a{
+text-decoration:none;
+color:white;
+padding:12px;
+border-radius:10px;
+}
+
+.menu a:hover{
+background:#d10000;
+}
+
+.menu-btn{
+
+position:fixed;
+top:15px;
+left:15px;
+width:50px;
+height:50px;
+border:none;
+border-radius:12px;
+background:#d10000;
+color:white;
+font-size:24px;
+z-index:7000;
+cursor:pointer;
+
+}
+
+.menu-header button{
+background:none;
+border:none;
+color:white;
+font-size:20px;
+cursor:pointer;
+}
+
+/* TOPO */
+
+.topbar{
+position:fixed;
+top:0;
+left:0;
+right:0;
+height:60px;
+display:flex;
+justify-content:center;
+align-items:center;
+background:rgba(0,0,0,.35);
+backdrop-filter:blur(8px);
+z-index:5000;
+}
+
+.topbar span{
+color:#ff2d2d;
+font-weight:bold;
+letter-spacing:2px;
 }
 
 /* HERO */
@@ -73,25 +172,47 @@ linear-gradient(rgba(0,0,0,.35),rgba(0,0,0,.88)),
 url("assets/luffy-bg.webp");
 background-size:cover;
 background-position:center;
-filter:brightness(.6);
+filter:brightness(.55);
 }
 
-/* Relâmpagos */
+/* RELÂMPAGO */
 
 .flash{
 position:absolute;
 inset:0;
 background:
-radial-gradient(circle at 25% 20%,rgba(255,0,0,.25),transparent 30%),
-radial-gradient(circle at 80% 35%,rgba(255,0,0,.18),transparent 28%);
-animation:raio 2.2s infinite;
+radial-gradient(circle at 20% 20%,rgba(255,0,0,.25),transparent 35%),
+radial-gradient(circle at 80% 35%,rgba(255,0,0,.18),transparent 30%);
+animation:raio 2.5s infinite;
 }
 
 @keyframes raio{
 50%{opacity:.35;}
 }
 
-/* Brasas */
+/* CHUVA */
+
+.rain{
+position:absolute;
+inset:0;
+pointer-events:none;
+overflow:hidden;
+}
+
+.drop{
+position:absolute;
+top:-20px;
+width:2px;
+height:18px;
+background:rgba(255,70,70,.8);
+animation:rain linear infinite;
+}
+
+@keyframes rain{
+100%{transform:translateY(110vh);}
+}
+
+/* BRASAS */
 
 .embers{
 position:absolute;
@@ -110,33 +231,29 @@ animation:subir linear infinite;
 }
 
 @keyframes subir{
-0%{
-transform:translateY(0);
-opacity:1;
-}
 100%{
 transform:translateY(-110vh);
 opacity:0;
 }
 }
 
-/* Caixa */
+/* CARD */
 
 .box{
 position:relative;
 z-index:5;
-width:92%;
-max-width:400px;
+width:90%;
+max-width:390px;
 padding:30px;
 background:rgba(0,0,0,.42);
 backdrop-filter:blur(10px);
-border-radius:25px;
+border-radius:24px;
 border:1px solid rgba(255,0,0,.35);
 text-align:center;
 }
 
 .logo{
-font-size:46px;
+font-size:44px;
 font-weight:bold;
 color:#ff2d2d;
 text-shadow:0 0 20px red;
@@ -151,11 +268,9 @@ to{text-shadow:0 0 30px red;}
 .box p{
 font-size:18px;
 line-height:1.6;
-margin:24px 0;
+margin:22px 0;
 color:#ddd;
 }
-
-/* Botões */
 
 .btn{
 display:block;
@@ -187,7 +302,7 @@ background:#ff2d2d;
 
 .contador{
 margin-top:18px;
-color:#ffb3b3;
+color:#ffaaaa;
 animation:pulse 1.5s infinite;
 }
 
@@ -195,71 +310,7 @@ animation:pulse 1.5s infinite;
 50%{opacity:.5;}
 }
 
-/* MENU */
-
-.menu{
-position:fixed;
-left:-280px;
-top:0;
-width:260px;
-height:100%;
-background:#0b0b0b;
-padding:25px;
-display:flex;
-flex-direction:column;
-gap:18px;
-transition:.35s;
-z-index:6000;
-border-right:2px solid #7a0000;
-}
-
-.menu.show{
-left:0;
-}
-
-.menu-header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-font-size:22px;
-font-weight:bold;
-color:#ff2d2d;
-margin-bottom:20px;
-}
-
-.menu a{
-text-decoration:none;
-color:white;
-padding:12px;
-border-radius:10px;
-}
-
-.menu a:hover{
-background:#d10000;
-}
-
-.menu-btn{
-position:fixed;
-top:18px;
-left:18px;
-width:50px;
-height:50px;
-border:none;
-border-radius:12px;
-background:#d10000;
-color:white;
-font-size:24px;
-z-index:7000;
-}
-
-.menu-header button{
-background:none;
-border:none;
-color:white;
-font-size:20px;
-}
-
-/* Bússola */
+/* BÚSSOLA */
 
 .compass{
 position:fixed;
@@ -275,25 +326,6 @@ transition:.3s;
 transform:rotate(25deg);
 }
 
-/* Som */
-
-.sound{
-position:fixed;
-bottom:18px;
-right:18px;
-width:55px;
-height:55px;
-border-radius:50%;
-background:#d10000;
-display:flex;
-justify-content:center;
-align-items:center;
-font-size:24px;
-cursor:pointer;
-z-index:100;
-box-shadow:0 0 20px rgba(255,0,0,.5);
-}
-
 </style>
 
 </head>
@@ -306,9 +338,7 @@ box-shadow:0 0 20px rgba(255,0,0,.5);
 
 <div class="jolly">☠️</div>
 
-<div class="intro-text">
-PIRATE STORE
-</div>
+<div class="intro-text">PIRATE STORE</div>
 
 </div>
 
@@ -325,13 +355,30 @@ PIRATE STORE
 </div>
 
 <a href="index.html">⚓ Início</a>
-<a href="contas.html">📜 Contas</a>
-<a href="admin.html">📖 Livro do Capitão</a>
+
+<a href="contas.html">📜 Ver Contas</a>
+
+<a href="login.html">🔐 Entrar como ADM</a>
+
 <a href="ilha.html">🏝️ Ilha dos Imperadores</a>
+
+<a href="https://wa.me/555198379743?text=Olá! Preciso de ajuda na Pirate Store.">
+
+💬 Fale Conosco
+
+</a>
 
 </div>
 
 <button id="openMenu" class="menu-btn">☰</button>
+
+<!-- TOPO -->
+
+<div class="topbar">
+
+<span>PIRATE STORE • ⚓ 3 Tesouros</span>
+
+</div>
 
 <!-- HERO -->
 
@@ -340,6 +387,8 @@ PIRATE STORE
 <div class="bg"></div>
 
 <div class="flash"></div>
+
+<div class="rain" id="rain"></div>
 
 <div class="embers" id="embers"></div>
 
@@ -350,7 +399,9 @@ PIRATE STORE
 </div>
 
 <p>
-Obrigado por participar da nossa jornada no rumo de venda de contas.
+
+Obrigado por participar da nossa jornada no rumo da venda de contas.
+
 </p>
 
 <a class="btn red"
@@ -368,7 +419,9 @@ href="contas.html">
 </a>
 
 <div class="contador">
+
 ⚓ 3 Tesouros aguardando um novo capitão.
+
 </div>
 
 </div>
@@ -377,21 +430,23 @@ href="contas.html">
 
 <!-- BÚSSOLA -->
 
-<div id="compass" class="compass">🧭</div>
+<div id="compass" class="compass">
 
-<!-- BOTÃO DE SOM -->
+🧭
 
-<div class="sound" id="sound">🔊</div>
+</div>
 
 <script>
 
-/* Intro */
+/* INTRO */
 
 setTimeout(()=>{
+
 document.getElementById("intro").classList.add("hide");
+
 },2200);
 
-/* Brasas */
+/* BRASAS */
 
 const embers=document.getElementById("embers");
 
@@ -409,7 +464,27 @@ embers.appendChild(e);
 
 }
 
-/* Menu */
+/* CHUVA */
+
+const rain=document.getElementById("rain");
+
+for(let i=0;i<90;i++){
+
+const d=document.createElement("span");
+
+d.className="drop";
+
+d.style.left=Math.random()*100+"%";
+
+d.style.animationDuration=(.8+Math.random()*.7)+"s";
+
+d.style.animationDelay=Math.random()*2+"s";
+
+rain.appendChild(d);
+
+}
+
+/* MENU */
 
 const menu=document.getElementById("menu");
 
@@ -417,31 +492,19 @@ document.getElementById("openMenu").onclick=()=>menu.classList.add("show");
 
 document.getElementById("closeMenu").onclick=()=>menu.classList.remove("show");
 
-/* Bússola secreta */
+/* BÚSSOLA */
 
-let cliques=0;
+let clicks=0;
 
 document.getElementById("compass").onclick=()=>{
 
-cliques++;
+clicks++;
 
-if(cliques>=5){
+if(clicks>=5){
 
 window.location.href="ilha.html";
 
 }
-
-};
-
-/* Som */
-
-let ligado=false;
-
-document.getElementById("sound").onclick=function(){
-
-ligado=!ligado;
-
-this.innerHTML=ligado?"🔇":"🔊";
 
 };
 
