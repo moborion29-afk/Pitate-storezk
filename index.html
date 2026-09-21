@@ -3,137 +3,373 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Pirate Store</title>
 
+<link rel="stylesheet" href="css/style.css">
+
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
-}
 
 body{
+margin:0;
 background:#050505;
-color:white;
-overflow-x:hidden;
+overflow:hidden;
 }
 
+/* ===== Tela de abertura ===== */
+
+#intro{
+
+position:fixed;
+inset:0;
+z-index:9999;
+display:flex;
+justify-content:center;
+align-items:center;
+background:#000;
+transition:opacity .8s;
+
+}
+
+#intro.hide{
+
+opacity:0;
+pointer-events:none;
+
+}
+
+.navio{
+
+font-size:90px;
+animation:navio 2s ease forwards;
+
+}
+
+@keyframes navio{
+
+0%{
+opacity:0;
+transform:translateX(-180px);
+}
+
+100%{
+opacity:1;
+transform:translateX(0);
+}
+
+}
+
+/* ===== Página principal ===== */
+
 .hero{
+
+position:relative;
 height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-position:relative;
 overflow:hidden;
-background:
-linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.9)),
-radial-gradient(circle at top,#4d0000,#050505 70%);
+
 }
 
-.hero::before{
-content:"";
+.bg{
+
 position:absolute;
-width:150%;
-height:150%;
+inset:0;
 background:
-radial-gradient(circle,rgba(255,0,0,.12),transparent 60%);
-animation:pulse 3s infinite;
+linear-gradient(rgba(0,0,0,.35),rgba(0,0,0,.85)),
+url("https://images.unsplash.com/photo-1517404215738-15263e9f9178?q=80&w=1400&auto=format&fit=crop");
+background-size:cover;
+background-position:center;
+filter:brightness(.55);
+
 }
 
-@keyframes pulse{
-50%{transform:scale(1.1);opacity:.4;}
+.flash{
+
+position:absolute;
+inset:0;
+background:
+radial-gradient(circle at 20% 20%,rgba(255,0,0,.25),transparent 35%),
+radial-gradient(circle at 80% 35%,rgba(255,0,0,.15),transparent 25%);
+animation:raio 2s infinite;
+
+}
+
+@keyframes raio{
+
+50%{
+opacity:.35;
+}
+
+}
+
+/* Brasas */
+
+.embers{
+
+position:absolute;
+inset:0;
+overflow:hidden;
+
+}
+
+.embers span{
+
+position:absolute;
+bottom:-20px;
+width:6px;
+height:6px;
+background:#ff3d00;
+border-radius:50%;
+animation:subir linear infinite;
+
+}
+
+@keyframes subir{
+
+0%{
+transform:translateY(0);
+opacity:1;
+}
+
+100%{
+transform:translateY(-110vh);
+opacity:0;
+}
+
 }
 
 .box{
+
 position:relative;
-z-index:2;
+z-index:5;
 width:92%;
-max-width:400px;
+max-width:390px;
 padding:30px;
-border-radius:22px;
-background:rgba(0,0,0,.45);
-backdrop-filter:blur(8px);
-border:1px solid rgba(255,0,0,.35);
 text-align:center;
+background:rgba(0,0,0,.42);
+backdrop-filter:blur(10px);
+border-radius:24px;
+border:1px solid rgba(255,0,0,.35);
+
 }
 
 .logo{
+
 font-size:46px;
 font-weight:bold;
-color:#ff1f1f;
-text-shadow:0 0 20px red;
-margin-bottom:15px;
+color:#ff2d2d;
+text-shadow:0 0 18px red;
+animation:acender 2s infinite alternate;
+
 }
 
-.texto{
-font-size:20px;
+@keyframes acender{
+
+from{
+text-shadow:0 0 10px #800;
+}
+
+to{
+text-shadow:0 0 28px red;
+}
+
+}
+
+p{
+
+font-size:19px;
 line-height:1.5;
-margin-bottom:28px;
+margin:25px 0;
+color:#ddd;
+
 }
 
 .btn{
+
 display:block;
 padding:16px;
 margin:12px 0;
 border-radius:14px;
 text-decoration:none;
-font-size:20px;
+font-size:19px;
 font-weight:bold;
-transition:.25s;
+color:white;
+transition:.3s;
+
 }
 
-.whats{
+.red{
+
 background:#d10000;
-color:white;
+
+}
+
+.red:hover{
+
+transform:scale(1.03);
+
 }
 
 .out{
+
 border:2px solid #ff2d2d;
-color:white;
+
 }
 
 .out:hover{
+
 background:#ff2d2d;
+
 }
 
-footer{
-padding:20px;
-text-align:center;
-color:#888;
+.contador{
+
+margin-top:18px;
+color:#ffaaaa;
+animation:pulse 1.5s infinite;
+
 }
+
+@keyframes pulse{
+
+50%{
+opacity:.5;
+}
+
+}
+
+/* Bússola escondida */
+
+.compass{
+
+position:fixed;
+bottom:18px;
+left:18px;
+font-size:34px;
+cursor:pointer;
+user-select:none;
+transition:.3s;
+z-index:50;
+
+}
+
+.compass:hover{
+
+transform:rotate(25deg);
+
+}
+
 </style>
 
 </head>
 
 <body>
 
+<!-- INTRO -->
+
+<div id="intro">
+
+<div class="navio">
+🚢
+</div>
+
+</div>
+
+<!-- HERO -->
+
 <section class="hero">
+
+<div class="bg"></div>
+
+<div class="flash"></div>
+
+<div class="embers" id="embers"></div>
 
 <div class="box">
 
-<div class="logo">PIRATE STORE</div>
-
-<div class="texto">
-Obrigado por participar da nossa jornada no rumo de venda de contas.
+<div class="logo">
+PIRATE STORE
 </div>
 
-<a class="btn whats"
+<p>
+
+Obrigado por participar da nossa jornada no rumo de venda de contas.
+
+</p>
+
+<a class="btn red"
 href="https://wa.me/555198379743?text=Olá! Tenho interesse em uma conta da Pirate Store.">
+
 🏴‍☠️ Fale Conosco
+
 </a>
 
-<a class="btn out" href="contas.html">
+<a class="btn out"
+href="contas.html">
+
 ⚓ Ver Contas
+
 </a>
+
+<div class="contador">
+
+⚓ 3 Tesouros aguardando um novo capitão.
+
+</div>
 
 </div>
 
 </section>
 
-<footer>
-Pirate Store • Banco Inter • Blox Fruits
-</footer>
+<div class="compass" id="compass">
+
+🧭
+
+</div>
+
+<script>
+
+// Intro
+
+setTimeout(()=>{
+document.getElementById("intro").classList.add("hide");
+},2000);
+
+// Brasas
+
+const embers=document.getElementById("embers");
+
+for(let i=0;i<35;i++){
+
+const e=document.createElement("span");
+
+e.style.left=Math.random()*100+"%";
+e.style.animationDuration=3+Math.random()*4+"s";
+e.style.animationDelay=Math.random()*4+"s";
+
+embers.appendChild(e);
+
+}
+
+// Easter Egg
+
+let cliques=0;
+
+document.getElementById("compass").onclick=()=>{
+
+cliques++;
+
+if(cliques===5){
+
+window.location.href="ilha.html";
+
+}
+
+};
+
+</script>
 
 </body>
 </html>
