@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Conta Lv.2600 - Pirate Store</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+
+.topo{
+position:sticky;
+top:0;
+padding:18px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:#0b0b0b;
+border-bottom:2px solid #b30000;
+z-index:100;
+}
+
+.back{
+text-decoration:none;
+color:white;
+padding:10px 16px;
+border:1px solid #ff2d2d;
+border-radius:10px;
+}
+
+.container{
+max-width:900px;
+margin:auto;
+padding:25px;
+}
+
+.galeria{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:15px;
+margin-bottom:25px;
+}
+
+.foto{
+height:240px;
+border-radius:18px;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:70px;
+background:linear-gradient(135deg,#3a0000,#8b0000);
+border:2px solid #4b0000;
+}
+
+.info{
+background:#111;
+padding:25px;
+border-radius:22px;
+border:1px solid #222;
+}
+
+.preco{
+font-size:42px;
+font-weight:bold;
+color:#ff2d2d;
+margin:18px 0;
+}
+
+.badge{
+display:inline-block;
+padding:8px 16px;
+border-radius:20px;
+background:#00aa44;
+margin-bottom:20px;
+}
+
+.rota{
+margin:30px 0;
+}
+
+.barra{
+height:8px;
+background:#222;
+border-radius:20px;
+overflow:hidden;
+}
+
+.progresso{
+width:40%;
+height:100%;
+background:#ff2d2d;
+animation:andar 2s infinite alternate;
+}
+
+@keyframes andar{
+from{width:25%;}
+to{width:45%;}
+}
+
+.etapas{
+display:flex;
+justify-content:space-between;
+margin-top:10px;
+font-size:13px;
+color:#aaa;
+}
+
+.botao-comprar{
+display:block;
+text-align:center;
+padding:18px;
+background:#d10000;
+color:white;
+text-decoration:none;
+font-size:22px;
+font-weight:bold;
+border-radius:15px;
+margin-top:25px;
+}
+
+.botao-comprar:hover{
+background:#ff2d2d;
+transform:scale(1.02);
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="topo">
+
+<div class="logo">PIRATE STORE</div>
+
+<a class="back" href="contas.html">← Voltar</a>
+
+</div>
+
+<div class="container">
+
+<div class="galeria">
+
+<div class="foto">🏴‍☠️</div>
+
+<div class="foto">⚔️</div>
+
+</div>
+
+<div class="info">
+
+<div class="badge">Imperador</div>
+
+<h1>Conta Level 2600</h1>
+
+<p>Raça: Ghoul V4</p>
+<p>Frutas: Kitsune, Leopard</p>
+<p>Gamepasses: Dark Blade</p>
+
+<div class="preco">
+R$149,90
+</div>
+
+<div class="rota">
+
+<h3>Rota até o Tesouro</h3>
+
+<div class="barra">
+<div class="progresso"></div>
+</div>
+
+<div class="etapas">
+<span>Escolher</span>
+<span>Comprar</span>
+<span>Confirmar</span>
+<span>Baú</span>
+</div>
+
+</div>
+
+<a class="botao-comprar"
+href="checkout.html">
+⚓ Comprar Agora
+</a>
+
+</div>
+
+</div>
+
+</body>
+</html>
