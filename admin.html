@@ -29,112 +29,291 @@ box-shadow:0 0 30px rgba(0,0,0,.6);
 h1{
 
 text-align:center;
-color:#ffd67a;
-margin-bottom:25px;
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Livro do Capitão - Pirate Store</title>
 
-}
+<link rel="stylesheet" href="css/style.css">
 
-.conta{
+<style>
 
-background:rgba(0,0,0,.25);
+body{
+background:#050505;
+color:white;
+font-family:Arial,sans-serif;
 padding:18px;
-border-radius:15px;
-margin-bottom:18px;
-border:1px solid rgba(255,255,255,.08);
-
+margin:0;
 }
 
-.status{
-
-display:inline-block;
-padding:6px 12px;
-border-radius:20px;
-background:#00aa44;
-margin-bottom:12px;
-
+.livro{
+max-width:720px;
+margin:auto;
+background:linear-gradient(135deg,#3b2208,#1b1208);
+border:3px solid #8a5a22;
+border-radius:22px;
+padding:22px;
+box-shadow:0 0 35px rgba(0,0,0,.7);
 }
 
-.botoes{
-
+.topo{
 display:flex;
-gap:10px;
-margin-top:15px;
-flex-wrap:wrap;
+justify-content:space-between;
+align-items:center;
+margin-bottom:20px;
+}
 
+h1{
+color:#ffd67a;
+margin:0;
+}
+
+.sair{
+background:#5c0000;
+padding:10px 16px;
+border-radius:10px;
+color:white;
+text-decoration:none;
+font-weight:bold;
+}
+
+form{
+display:grid;
+gap:12px;
+margin-top:20px;
+}
+
+input,textarea{
+padding:14px;
+border:none;
+border-radius:12px;
+background:#111;
+color:white;
+font-size:15px;
 }
 
 button{
-
-padding:12px 18px;
+padding:15px;
 border:none;
-border-radius:10px;
+border-radius:12px;
+background:#d10000;
 color:white;
+font-size:16px;
 font-weight:bold;
 cursor:pointer;
+}
 
+.lista{
+margin-top:30px;
+display:grid;
+gap:15px;
+}
+
+.card{
+background:#111;
+padding:18px;
+border-radius:14px;
+border:1px solid #333;
+}
+
+.status{
+display:inline-block;
+padding:5px 10px;
+background:#00aa44;
+border-radius:20px;
+font-size:12px;
+margin-bottom:10px;
+}
+
+.status.vendida{
+background:#a10000;
+}
+
+.acoes{
+display:flex;
+gap:8px;
+margin-top:15px;
+flex-wrap:wrap;
+}
+
+.acoes button{
+flex:1;
+padding:10px;
+font-size:13px;
+}
+
+.excluir{
+background:#5c0000;
 }
 
 .editar{
-
-background:#0a6cff;
-
-}
-
-.vendida{
-
-background:#d10000;
-
-}
-
-.nova{
-
-width:100%;
-margin-top:20px;
-background:#ff2d2d;
-padding:16px;
-font-size:18px;
-
+background:#0066cc;
 }
 
 </style>
-
 </head>
 
 <body>
 
+<script>
+if(sessionStorage.getItem("adminLogado")!=="sim"){
+window.location.href="login.html";
+}
+</script>
+
 <div class="livro">
+
+<div class="topo">
 
 <h1>📖 Livro do Capitão</h1>
 
-<div class="conta">
+<a href="#" class="sair" onclick="logout()">Sair</a>
 
-<div class="status">Disponível</div>
+</div>
 
-<h2>Conta Lv.2600</h2>
+<form id="form">
 
-<p>Preço: R$149,90</p>
+<input id="titulo" placeholder="Nome da conta" required>
 
-<p>Ghoul V4 • Kitsune • Leopard</p>
+<input id="preco" placeholder="Preço (149,90)" required>
 
-<div class="botoes">
+<input id="nivel" placeholder="Nível">
 
-<button class="editar">
+<input id="raca" placeholder="Raça">
+
+<input id="frutas" placeholder="Frutas">
+
+<button type="submit">
+➕ Adicionar Conta
+</button>
+
+</form>
+
+<div id="lista" class="lista"></div>
+
+</div>
+
+<script>
+
+let contas=[];
+
+const lista=document.getElementById("lista");
+const form=document.getElementById("form");
+
+form.onsubmit=(e)=>{
+
+e.preventDefault();
+
+contas.push({
+
+titulo:titulo.value,
+preco:preco.value,
+nivel:nivel.value,
+raca:raca.value,
+frutas:frutas.value,
+status:"Disponível"
+
+});
+
+render();
+
+form.reset();
+
+};
+
+function render(){
+
+lista.innerHTML="";
+
+contas.forEach((c,i)=>{
+
+lista.innerHTML+=`
+
+<div class="card">
+
+<div class="status ${c.status==="Vendida"?"vendida":""}">
+${c.status}
+</div>
+
+<h2>${c.titulo}</h2>
+
+<p><b>Nível:</b> ${c.nivel}</p>
+
+<p><b>Raça:</b> ${c.raca}</p>
+
+<p><b>Frutas:</b> ${c.frutas}</p>
+
+<h2 style="color:#ff2d2d;">R$ ${c.preco}</h2>
+
+<div class="acoes">
+
+<button onclick="vender(${i})">
+🏴 Vendida
+</button>
+
+<button class="editar" onclick="editar(${i})">
 ✏️ Editar
 </button>
 
-<button class="vendida">
-🏴 Marcar Vendida
+<button class="excluir" onclick="excluirConta(${i})">
+🗑 Excluir
 </button>
 
 </div>
 
 </div>
 
-<button class="nova">
-➕ Nova Conta
-</button>
+`;
 
-</div>
+});
+
+}
+
+function vender(i){
+
+contas[i].status="Vendida";
+
+render();
+
+}
+
+function editar(i){
+
+titulo.value=contas[i].titulo;
+preco.value=contas[i].preco;
+nivel.value=contas[i].nivel;
+raca.value=contas[i].raca;
+frutas.value=contas[i].frutas;
+
+contas.splice(i,1);
+
+render();
+
+}
+
+function excluirConta(i){
+
+if(confirm("Excluir esta conta?")){
+
+contas.splice(i,1);
+
+render();
+
+}
+
+}
+
+function logout(){
+
+sessionStorage.removeItem("adminLogado");
+
+window.location.href="index.html";
+
+}
+
+</script>
 
 </body>
 </html>
