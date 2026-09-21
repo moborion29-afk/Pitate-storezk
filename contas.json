@@ -1,0 +1,13 @@
+[
+  {
+    "id": 1,
+    "titulo": "Conta Lv.2600",
+    "preco": "149,90",
+    "raca": "Ghoul V4",
+    "frutas": "Kitsune, Leopard",
+    "gamepasses": "Dark Blade",
+    "raridade": "Imperador",
+    "status": "Disponível",
+    "imagem": "assets/luffy-bg.webp"
+  }
+]
