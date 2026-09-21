@@ -2,109 +2,130 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Pirate Store</title>
 
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
-}
-
-body{
-background:#050505;
-color:white;
-overflow-x:hidden;
-}
-
-/* Fundo animado */
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif;}
+body{background:#050505;color:#fff;overflow-x:hidden;}
 .hero{
 height:100vh;
 display:flex;
-justify-content:center;
 align-items:center;
+justify-content:center;
 padding:20px;
 position:relative;
-background:
-linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.85)),
-url("https://images.unsplash.com/photo-1517404215738-15263e9f9178?q=80&w=1400&auto=format&fit=crop");
-background-size:cover;
-background-position:center;
+overflow:hidden;
 }
-
-.hero::before{
-content:"";
+.hero img{
+position:absolute;
+width:100%;
+height:100%;
+object-fit:cover;
+filter:brightness(.45);
+}
+.overlay{
 position:absolute;
 inset:0;
-background:radial-gradient(circle at center, rgba(255,0,0,.15), transparent 60%);
-animation:pulse 4s infinite;
+background:linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.85));
 }
-
+.lightning{
+position:absolute;
+inset:0;
+background:radial-gradient(circle,#ff000022,transparent 60%);
+animation:pulse 2s infinite;
+}
 @keyframes pulse{
-50%{opacity:.4}
+50%{opacity:.3;}
 }
-
 .box{
 position:relative;
 z-index:2;
-max-width:400px;
-text-align:center;
+max-width:380px;
+width:100%;
+padding:25px;
+border-radius:25px;
 background:rgba(0,0,0,.45);
-backdrop-filter:blur(6px);
-padding:30px;
+backdrop-filter:blur(8px);
 border:1px solid rgba(255,0,0,.4);
-border-radius:22px;
+text-align:center;
 }
-
 .logo{
 font-size:46px;
 font-weight:bold;
-color:#ff1f1f;
-text-shadow:0 0 18px red;
+color:#ff2020;
+text-shadow:0 0 20px red;
 margin-bottom:10px;
 }
-
-.sub{
-font-size:18px;
-line-height:1.6;
+p{
+font-size:22px;
+line-height:1.5;
 margin-bottom:30px;
 }
-
 .btn{
 display:block;
-padding:15px;
+padding:16px;
 margin:12px 0;
 border-radius:12px;
 text-decoration:none;
+font-size:22px;
 font-weight:bold;
 transition:.25s;
 }
-
-.red{
-background:#d60000;
+.whats{
+background:#d90000;
 color:white;
 }
-
-.red:hover{
+.whats:hover{
 transform:scale(1.03);
 }
-
 .out{
-border:2px solid #ff2d2d;
+border:2px solid #ff2020;
 color:white;
 }
-
 .out:hover{
-background:#ff2d2d;
+background:#ff2020;
 }
-
-footer{
-padding:18px;
+#contas{
+padding:40px 20px;
+background:#080808;
+}
+.card{
+background:#111;
+border-radius:20px;
+overflow:hidden;
+max-width:350px;
+margin:auto;
+border:1px solid #222;
+}
+.card img{
+width:100%;
+display:block;
+}
+.info{
+padding:20px;
+}
+.price{
+color:#ff2020;
+font-size:32px;
+font-weight:bold;
+margin:10px 0;
+}
+.buy{
+display:block;
 text-align:center;
-color:#bbb;
-background:#090909;
+padding:14px;
+background:#d90000;
+color:white;
+text-decoration:none;
+border-radius:10px;
+font-weight:bold;
+}
+footer{
+padding:20px;
+text-align:center;
+color:#aaa;
+background:#050505;
 }
 </style>
 </head>
@@ -113,15 +134,21 @@ background:#090909;
 
 <section class="hero">
 
+<img src="https://i.imgur.com/W1YQq9N.jpeg">
+
+<div class="overlay"></div>
+<div class="lightning"></div>
+
 <div class="box">
 
 <div class="logo">PIRATE STORE</div>
 
-<p class="sub">
+<p>
 Obrigado por participar da nossa jornada no rumo de venda de contas.
 </p>
 
-<a class="btn red" href="https://wa.me/55SEUNUMERO">
+<a class="btn whats"
+href="https://wa.me/555198379743?text=Olá!%20Tenho%20interesse%20em%20uma%20conta%20da%20Pirate%20Store.">
 🏴‍☠️ Fale Conosco
 </a>
 
@@ -133,61 +160,26 @@ Obrigado por participar da nossa jornada no rumo de venda de contas.
 
 </section>
 
-<section id="contas" style="padding:35px">
+<section id="contas">
 
-<h2 style="text-align:center;margin-bottom:25px;color:#ff2d2d">
-Contas Disponíveis
-</h2>
+<div class="card">
 
-<div style="
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:20px;
-max-width:900px;
-margin:auto;
-">
+<img src="https://i.imgur.com/W1YQq9N.jpeg">
 
-<div style="background:#111;border-radius:18px;overflow:hidden;border:1px solid #222">
+<div class="info">
 
-<div style="
-height:220px;
-background:linear-gradient(135deg,#450000,#b30000);
-display:flex;
-justify-content:center;
-align-items:center;
-font-size:60px;
-">
-🏴‍☠️
-</div>
+<h2>Conta Lv.2600</h2>
 
-<div style="padding:20px">
-
-<h3>Conta Lv.2600</h3>
-
-<p style="margin:8px 0;color:#ccc">
+<p style="font-size:17px;color:#ccc;margin-bottom:10px;">
 Ghoul V4 • Kitsune • Leopard
 </p>
 
-<h2 style="color:#ff2d2d">
-R$ 149,90
-</h2>
+<div class="price">R$149,90</div>
 
-<a href="https://wa.me/55SEUNUMERO"
-style="
-display:block;
-text-align:center;
-margin-top:18px;
-padding:14px;
-background:#d60000;
-color:white;
-border-radius:10px;
-text-decoration:none;
-font-weight:bold;
-">
+<a class="buy"
+href="https://wa.me/555198379743?text=Quero%20comprar%20a%20Conta%20Lv.2600.">
 Comprar
 </a>
-
-</div>
 
 </div>
 
@@ -197,7 +189,7 @@ Comprar
 
 <footer>
 
-Pirate Store • Blox Fruits • Pix Banco Inter
+Pirate Store • Blox Fruits • Banco Inter
 
 </footer>
 
