@@ -2,157 +2,50 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Livro do Capitão</title>
 
 <link rel="stylesheet" href="css/style.css">
 
 <style>
-
 body{
 background:#050505;
 padding:20px;
-}
-
-.livro{
-
-max-width:700px;
-margin:auto;
-background:linear-gradient(135deg,#3b2208,#1b1208);
-border:4px solid #7a4b17;
-border-radius:20px;
-padding:25px;
-box-shadow:0 0 30px rgba(0,0,0,.6);
-
-}
-
-h1{
-
-text-align:center;
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Livro do Capitão - Pirate Store</title>
-
-<link rel="stylesheet" href="css/style.css">
-
-<style>
-
-body{
-background:#050505;
 color:white;
 font-family:Arial,sans-serif;
-padding:18px;
-margin:0;
 }
 
 .livro{
-max-width:720px;
+max-width:700px;
 margin:auto;
 background:linear-gradient(135deg,#3b2208,#1b1208);
 border:3px solid #8a5a22;
 border-radius:22px;
 padding:22px;
-box-shadow:0 0 35px rgba(0,0,0,.7);
 }
 
-.topo{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:20px;
-}
-
-h1{
-color:#ffd67a;
-margin:0;
-}
-
-.sair{
-background:#5c0000;
-padding:10px 16px;
-border-radius:10px;
-color:white;
-text-decoration:none;
-font-weight:bold;
-}
-
-form{
-display:grid;
-gap:12px;
-margin-top:20px;
-}
-
-input,textarea{
+input{
+width:100%;
 padding:14px;
-border:none;
-border-radius:12px;
+margin:8px 0;
 background:#111;
 color:white;
-font-size:15px;
+border:none;
+border-radius:12px;
+box-sizing:border-box;
 }
 
 button{
-padding:15px;
-border:none;
-border-radius:12px;
+padding:14px;
+width:100%;
 background:#d10000;
+border:none;
 color:white;
-font-size:16px;
-font-weight:bold;
-cursor:pointer;
+border-radius:12px;
+margin-top:10px;
 }
-
-.lista{
-margin-top:30px;
-display:grid;
-gap:15px;
-}
-
-.card{
-background:#111;
-padding:18px;
-border-radius:14px;
-border:1px solid #333;
-}
-
-.status{
-display:inline-block;
-padding:5px 10px;
-background:#00aa44;
-border-radius:20px;
-font-size:12px;
-margin-bottom:10px;
-}
-
-.status.vendida{
-background:#a10000;
-}
-
-.acoes{
-display:flex;
-gap:8px;
-margin-top:15px;
-flex-wrap:wrap;
-}
-
-.acoes button{
-flex:1;
-padding:10px;
-font-size:13px;
-}
-
-.excluir{
-background:#5c0000;
-}
-
-.editar{
-background:#0066cc;
-}
-
 </style>
+
 </head>
 
 <body>
@@ -165,154 +58,31 @@ window.location.href="login.html";
 
 <div class="livro">
 
-<div class="topo">
+<h1 style="color:#ffd67a;">📖 Livro do Capitão</h1>
 
-<h1>📖 Livro do Capitão</h1>
+<input placeholder="Nome da conta">
 
-<a href="#" class="sair" onclick="logout()">Sair</a>
+<input placeholder="Preço">
 
-</div>
+<input placeholder="Nível">
 
-<form id="form">
+<input placeholder="Raça">
 
-<input id="titulo" placeholder="Nome da conta" required>
+<input placeholder="Frutas">
 
-<input id="preco" placeholder="Preço (149,90)" required>
+<button>➕ Adicionar Conta</button>
 
-<input id="nivel" placeholder="Nível">
-
-<input id="raca" placeholder="Raça">
-
-<input id="frutas" placeholder="Frutas">
-
-<button type="submit">
-➕ Adicionar Conta
+<button onclick="logout()" style="background:#5c0000;">
+Sair
 </button>
-
-</form>
-
-<div id="lista" class="lista"></div>
 
 </div>
 
 <script>
-
-let contas=[];
-
-const lista=document.getElementById("lista");
-const form=document.getElementById("form");
-
-form.onsubmit=(e)=>{
-
-e.preventDefault();
-
-contas.push({
-
-titulo:titulo.value,
-preco:preco.value,
-nivel:nivel.value,
-raca:raca.value,
-frutas:frutas.value,
-status:"Disponível"
-
-});
-
-render();
-
-form.reset();
-
-};
-
-function render(){
-
-lista.innerHTML="";
-
-contas.forEach((c,i)=>{
-
-lista.innerHTML+=`
-
-<div class="card">
-
-<div class="status ${c.status==="Vendida"?"vendida":""}">
-${c.status}
-</div>
-
-<h2>${c.titulo}</h2>
-
-<p><b>Nível:</b> ${c.nivel}</p>
-
-<p><b>Raça:</b> ${c.raca}</p>
-
-<p><b>Frutas:</b> ${c.frutas}</p>
-
-<h2 style="color:#ff2d2d;">R$ ${c.preco}</h2>
-
-<div class="acoes">
-
-<button onclick="vender(${i})">
-🏴 Vendida
-</button>
-
-<button class="editar" onclick="editar(${i})">
-✏️ Editar
-</button>
-
-<button class="excluir" onclick="excluirConta(${i})">
-🗑 Excluir
-</button>
-
-</div>
-
-</div>
-
-`;
-
-});
-
-}
-
-function vender(i){
-
-contas[i].status="Vendida";
-
-render();
-
-}
-
-function editar(i){
-
-titulo.value=contas[i].titulo;
-preco.value=contas[i].preco;
-nivel.value=contas[i].nivel;
-raca.value=contas[i].raca;
-frutas.value=contas[i].frutas;
-
-contas.splice(i,1);
-
-render();
-
-}
-
-function excluirConta(i){
-
-if(confirm("Excluir esta conta?")){
-
-contas.splice(i,1);
-
-render();
-
-}
-
-}
-
 function logout(){
-
 sessionStorage.removeItem("adminLogado");
-
 window.location.href="index.html";
-
 }
-
 </script>
 
 </body>
