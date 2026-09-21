@@ -5,38 +5,29 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contas - Pirate Store</title>
 
+<link rel="stylesheet" href="css/style.css">
+
 <style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
-}
-
-body{
-background:#050505;
-color:white;
-}
 
 header{
 position:sticky;
 top:0;
-background:#0b0b0b;
 padding:18px;
 display:flex;
 justify-content:space-between;
 align-items:center;
+background:#0b0b0b;
 border-bottom:2px solid #b30000;
+z-index:100;
 }
 
-.logo{
-font-size:30px;
+.logo-top{
+font-size:28px;
 font-weight:bold;
 color:#ff2d2d;
 }
 
-.voltar{
+.back{
 text-decoration:none;
 color:white;
 padding:10px 16px;
@@ -47,61 +38,79 @@ border-radius:10px;
 .titulo{
 text-align:center;
 font-size:34px;
-margin:30px 0;
+margin:35px 0;
 color:#ff2d2d;
 }
 
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:22px;
+gap:24px;
 padding:20px;
 }
 
-.card{
-background:#111;
-border-radius:20px;
+.wanted{
+background:#141414;
+border-radius:22px;
 overflow:hidden;
-border:1px solid #222;
-transition:.3s;
+border:2px solid #6b2b00;
+transition:.35s;
+animation:balanco 4s ease-in-out infinite;
 }
 
-.card:hover{
-transform:translateY(-6px);
-box-shadow:0 0 20px rgba(255,0,0,.35);
+.wanted:hover{
+transform:translateY(-8px);
+box-shadow:0 0 30px rgba(255,0,0,.35);
 }
 
-.banner{
-height:220px;
+@keyframes balanco{
+
+0%{transform:rotate(-1deg);}
+50%{transform:rotate(1deg);}
+100%{transform:rotate(-1deg);}
+
+}
+
+.poster{
+
+height:230px;
 display:flex;
 justify-content:center;
 align-items:center;
 font-size:70px;
 background:
-linear-gradient(135deg,#350000,#8a0000);
+linear-gradient(135deg,#4a2c0a,#8b5a2b);
+
 }
 
 .info{
-padding:20px;
+
+padding:22px;
+
 }
 
-.status{
+.rarity{
+
 display:inline-block;
-background:#00aa44;
 padding:6px 12px;
 border-radius:20px;
+background:#00aa44;
 font-size:13px;
 margin-bottom:12px;
+
 }
 
 .price{
+
 font-size:30px;
 font-weight:bold;
 color:#ff2d2d;
 margin:12px 0;
+
 }
 
 .buy{
+
 display:block;
 text-align:center;
 padding:15px;
@@ -110,13 +119,15 @@ color:white;
 text-decoration:none;
 border-radius:12px;
 font-weight:bold;
+
 }
 
-footer{
-padding:25px;
-text-align:center;
-color:#888;
+.buy:hover{
+
+background:#ff2d2d;
+
 }
+
 </style>
 
 </head>
@@ -125,43 +136,47 @@ color:#888;
 
 <header>
 
-<div class="logo">PIRATE STORE</div>
+<div class="logo-top">
+PIRATE STORE
+</div>
 
-<a class="voltar" href="index.html">
+<a class="back" href="index.html">
 ← Voltar
 </a>
 
 </header>
 
 <h1 class="titulo">
-Contas Disponíveis
+⚓ Contas Disponíveis
 </h1>
 
 <div class="grid">
 
-<div class="card">
+<div class="wanted">
 
-<div class="banner">
+<div class="poster">
 🏴‍☠️
 </div>
 
 <div class="info">
 
-<div class="status">
-Disponível
+<div class="rarity">
+Imperador
 </div>
 
 <h2>Conta Lv.2600</h2>
 
-<p>Ghoul V4 • Kitsune • Leopard</p>
+<p>
+Ghoul V4 • Kitsune • Leopard
+</p>
 
 <div class="price">
 R$149,90
 </div>
 
 <a class="buy"
-href="https://wa.me/555198379743?text=Quero comprar a Conta Lv.2600.">
-Comprar
+href="produto.html">
+Ver Recompensa
 </a>
 
 </div>
@@ -169,10 +184,6 @@ Comprar
 </div>
 
 </div>
-
-<footer>
-Pirate Store • Banco Inter • Blox Fruits
-</footer>
 
 </body>
 </html>
