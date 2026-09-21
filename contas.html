@@ -3,28 +3,39 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contas - Pirate Store</title>
+
+<title>Contas Disponíveis • Pirate Store</title>
 
 <link rel="stylesheet" href="css/style.css">
 
 <style>
 
+body{
+background:#050505;
+color:white;
+overflow-x:hidden;
+}
+
+/* ===== TOPO ===== */
+
 header{
 position:sticky;
 top:0;
-padding:18px;
+z-index:1000;
+background:rgba(10,10,10,.92);
+backdrop-filter:blur(8px);
+padding:16px 18px;
 display:flex;
 justify-content:space-between;
 align-items:center;
-background:#0b0b0b;
-border-bottom:2px solid #b30000;
-z-index:100;
+border-bottom:2px solid #7a0000;
 }
 
 .logo-top{
 font-size:28px;
 font-weight:bold;
 color:#ff2d2d;
+text-shadow:0 0 10px red;
 }
 
 .back{
@@ -32,35 +43,100 @@ text-decoration:none;
 color:white;
 padding:10px 16px;
 border:1px solid #ff2d2d;
-border-radius:10px;
+border-radius:12px;
 }
 
-.titulo{
+/* ===== HERO ===== */
+
+.hero-small{
+
+padding:45px 20px;
 text-align:center;
-font-size:34px;
-margin:35px 0;
-color:#ff2d2d;
+background:
+linear-gradient(rgba(0,0,0,.6),rgba(5,5,5,1)),
+radial-gradient(circle at top,#550000,#050505);
+
 }
+
+.hero-small h1{
+
+font-size:42px;
+color:#ff2d2d;
+margin-bottom:12px;
+
+}
+
+.hero-small p{
+
+color:#ddd;
+font-size:18px;
+
+}
+
+/* ===== PESQUISA ===== */
+
+.search-box{
+
+max-width:500px;
+margin:30px auto;
+
+}
+
+.search{
+
+width:100%;
+padding:16px;
+border-radius:16px;
+border:1px solid #333;
+background:#111;
+color:white;
+font-size:17px;
+
+}
+
+/* ===== CONTADOR ===== */
+
+.counter{
+
+text-align:center;
+margin-bottom:25px;
+color:#ffaaaa;
+font-size:18px;
+
+}
+
+/* ===== GRID ===== */
 
 .grid{
+
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:24px;
+gap:25px;
 padding:20px;
+max-width:1200px;
+margin:auto;
+
 }
 
+/* ===== CARTAZ ===== */
+
 .wanted{
+
 background:#141414;
 border-radius:22px;
 overflow:hidden;
 border:2px solid #6b2b00;
 transition:.35s;
-animation:balanco 4s ease-in-out infinite;
+animation:balanco 5s ease-in-out infinite;
+position:relative;
+
 }
 
 .wanted:hover{
+
 transform:translateY(-8px);
 box-shadow:0 0 30px rgba(255,0,0,.35);
+
 }
 
 @keyframes balanco{
@@ -73,11 +149,11 @@ box-shadow:0 0 30px rgba(255,0,0,.35);
 
 .poster{
 
-height:230px;
+height:250px;
 display:flex;
 justify-content:center;
 align-items:center;
-font-size:70px;
+font-size:72px;
 background:
 linear-gradient(135deg,#4a2c0a,#8b5a2b);
 
@@ -94,18 +170,30 @@ padding:22px;
 display:inline-block;
 padding:6px 12px;
 border-radius:20px;
-background:#00aa44;
+background:#8b0000;
 font-size:13px;
 margin-bottom:12px;
+font-weight:bold;
 
 }
 
 .price{
 
-font-size:30px;
+font-size:32px;
 font-weight:bold;
 color:#ff2d2d;
-margin:12px 0;
+margin:15px 0;
+
+}
+
+.status{
+
+display:inline-block;
+padding:6px 12px;
+border-radius:20px;
+background:#00aa44;
+margin-bottom:18px;
+font-size:13px;
 
 }
 
@@ -119,12 +207,54 @@ color:white;
 text-decoration:none;
 border-radius:12px;
 font-weight:bold;
+font-size:17px;
+transition:.3s;
 
 }
 
 .buy:hover{
 
 background:#ff2d2d;
+
+}
+
+/* ===== RODAPÉ ===== */
+
+footer{
+
+padding:35px;
+text-align:center;
+color:#888;
+
+}
+
+/* ===== DEN DEN MUSHI ===== */
+
+.snail{
+
+position:fixed;
+right:20px;
+bottom:20px;
+width:65px;
+height:65px;
+background:#d10000;
+border-radius:50%;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:34px;
+text-decoration:none;
+box-shadow:0 0 20px rgba(255,0,0,.5);
+animation:flutuar 3s infinite;
+z-index:999;
+
+}
+
+@keyframes flutuar{
+
+50%{
+transform:translateY(-6px);
+}
 
 }
 
@@ -140,43 +270,122 @@ background:#ff2d2d;
 PIRATE STORE
 </div>
 
-<a class="back" href="index.html">
+<a href="index.html" class="back">
 ← Voltar
 </a>
 
 </header>
 
-<h1 class="titulo">
-⚓ Contas Disponíveis
-</h1>
+<section class="hero-small">
 
-<div class="grid">
+<h1>⚓ Contas Disponíveis</h1>
+
+<p>Escolha seu próximo tesouro.</p>
+
+</section>
+
+<div class="search-box">
+
+<input
+id="pesquisa"
+class="search"
+type="text"
+placeholder="Pesquisar conta, fruta ou raça...">
+
+</div>
+
+<div class="counter">
+
+🏴‍☠️ <span id="contador">3</span> tesouros aguardando um novo capitão.
+
+</div>
+
+<div class="grid" id="grid">
 
 <div class="wanted">
 
-<div class="poster">
-🏴‍☠️
-</div>
+<div class="poster">👑</div>
 
 <div class="info">
 
 <div class="rarity">
-Imperador
+IMPERADOR
 </div>
 
 <h2>Conta Lv.2600</h2>
 
-<p>
-Ghoul V4 • Kitsune • Leopard
-</p>
+<p>Ghoul V4 • Kitsune • Leopard</p>
 
 <div class="price">
 R$149,90
 </div>
 
-<a class="buy"
-href="produto.html">
-Ver Recompensa
+<div class="status">
+Disponível
+</div>
+
+<a href="produto.html" class="buy">
+⚔️ Ver Recompensa
+</a>
+
+</div>
+
+</div>
+
+<div class="wanted">
+
+<div class="poster">🐉</div>
+
+<div class="info">
+
+<div class="rarity">
+LENDÁRIA
+</div>
+
+<h2>Conta Lv.2550</h2>
+
+<p>Shark V4 • Dragon</p>
+
+<div class="price">
+R$119,90
+</div>
+
+<div class="status">
+Disponível
+</div>
+
+<a href="produto.html" class="buy">
+⚔️ Ver Recompensa
+</a>
+
+</div>
+
+</div>
+
+<div class="wanted">
+
+<div class="poster">⚡</div>
+
+<div class="info">
+
+<div class="rarity">
+RARA
+</div>
+
+<h2>Conta Lv.2400</h2>
+
+<p>Human V4 • Dough</p>
+
+<div class="price">
+R$89,90
+</div>
+
+<div class="status">
+Disponível
+</div>
+
+<a href="produto.html" class="buy">
+⚔️ Ver Recompensa
 </a>
 
 </div>
@@ -184,6 +393,44 @@ Ver Recompensa
 </div>
 
 </div>
+
+<footer>
+
+Pirate Store • Banco Inter • Blox Fruits
+
+</footer>
+
+<a
+class="snail"
+href="https://wa.me/555198379743?text=Olá! Preciso de ajuda na Pirate Store."
+title="Fale Conosco">
+
+🐌
+
+</a>
+
+<script>
+
+const pesquisa=document.getElementById("pesquisa");
+const cards=document.querySelectorAll(".wanted");
+
+pesquisa.addEventListener("keyup",()=>{
+
+const texto=pesquisa.value.toLowerCase();
+
+cards.forEach(card=>{
+
+const conteudo=card.innerText.toLowerCase();
+
+card.style.display=conteudo.includes(texto)
+? "block"
+: "none";
+
+});
+
+});
+
+</script>
 
 </body>
 </html>
