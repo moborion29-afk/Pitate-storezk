@@ -1,31 +1,33 @@
-// ===== INTRO =====
-
-window.onload=()=>{
+// INTRO
 
 setTimeout(()=>{
-
 const intro=document.getElementById("intro");
-
-if(intro) intro.classList.add("hide");
-
+if(intro){
+intro.style.transition=".8s";
+intro.style.opacity="0";
+setTimeout(()=>intro.remove(),800);
+}
 },2200);
 
-};
+// MENU
 
-// ===== BRASAS =====
+const menu=document.getElementById("menu");
+
+openMenu.onclick=()=>menu.classList.add("show");
+closeMenu.onclick=()=>menu.classList.remove("show");
+
+// BRASAS
 
 const embers=document.getElementById("embers");
 
 if(embers){
 
-for(let i=0;i<40;i++){
+for(let i=0;i<35;i++){
 
 const e=document.createElement("span");
 
 e.style.left=Math.random()*100+"%";
-
 e.style.animationDuration=(3+Math.random()*4)+"s";
-
 e.style.animationDelay=Math.random()*4+"s";
 
 embers.appendChild(e);
@@ -34,45 +36,47 @@ embers.appendChild(e);
 
 }
 
-// ===== RELÂMPAGO =====
+// CHUVA
 
-const flash=document.querySelector(".flash");
+const rain=document.getElementById("rain");
+
+if(rain){
+
+for(let i=0;i<90;i++){
+
+const d=document.createElement("span");
+
+d.className="drop";
+
+d.style.left=Math.random()*100+"%";
+d.style.animationDuration=(.8+Math.random()*.7)+"s";
+d.style.animationDelay=Math.random()*2+"s";
+
+rain.appendChild(d);
+
+}
+
+}
+
+// BANNER
+
+const slides=document.querySelectorAll(".slide");
+
+let atual=0;
 
 setInterval(()=>{
 
-if(!flash) return;
+slides[atual].classList.remove("active");
 
-flash.style.opacity=Math.random()*0.6+0.2;
+atual=(atual+1)%slides.length;
 
-},700);
+slides[atual].classList.add("active");
 
-// ===== MENU =====
+},4000);
 
-const menu=document.getElementById("menu");
-
-const open=document.getElementById("openMenu");
-
-const close=document.getElementById("closeMenu");
-
-if(open){
-
-open.onclick=()=>menu.classList.add("show");
-
-}
-
-if(close){
-
-close.onclick=()=>menu.classList.remove("show");
-
-}
-
-// ===== BÚSSOLA =====
+// BÚSSOLA
 
 let clicks=0;
-
-const compass=document.getElementById("compass");
-
-if(compass){
 
 compass.onclick=()=>{
 
@@ -85,5 +89,3 @@ window.location.href="ilha.html";
 }
 
 };
-
-}
