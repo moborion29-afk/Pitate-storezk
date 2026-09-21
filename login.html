@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Entrar como ADM</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+body{
+background:#050505;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+margin:0;
+}
+
+.card{
+width:90%;
+max-width:360px;
+background:rgba(0,0,0,.55);
+backdrop-filter:blur(10px);
+border:1px solid rgba(255,0,0,.35);
+border-radius:22px;
+padding:28px;
+text-align:center;
+}
+
+.logo{
+font-size:34px;
+color:#ff2d2d;
+font-weight:bold;
+margin-bottom:10px;
+text-shadow:0 0 15px red;
+}
+
+input{
+width:100%;
+padding:14px;
+margin:10px 0;
+border:none;
+border-radius:12px;
+background:#111;
+color:white;
+font-size:16px;
+box-sizing:border-box;
+}
+
+button{
+width:100%;
+padding:15px;
+margin-top:10px;
+border:none;
+border-radius:12px;
+background:#d10000;
+color:white;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.erro{
+margin-top:12px;
+color:#ff6666;
+display:none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<div class="logo">🔐 Pirate Store</div>
+
+<p>Área exclusiva do Capitão</p>
+
+<input id="user" placeholder="Usuário">
+<input id="pass" type="password" placeholder="Senha">
+
+<button onclick="login()">
+Entrar
+</button>
+
+<div id="erro" class="erro">
+Usuário ou senha incorretos.
+</div>
+
+</div>
+
+<script>
+function login(){
+
+const usuario=document.getElementById("user").value;
+const senha=document.getElementById("pass").value;
+
+if(usuario==="Capitao" && senha==="Pirate2600!"){
+
+sessionStorage.setItem("adminLogado","sim");
+window.location.href="admin.html";
+
+}else{
+
+document.getElementById("erro").style.display="block";
+
+}
+
+}
+</script>
+
+</body>
+</html>
