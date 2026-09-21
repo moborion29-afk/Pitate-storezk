@@ -13,252 +13,285 @@
 body{
 margin:0;
 background:#050505;
+color:white;
 overflow:hidden;
 }
 
-/* ===== Tela de abertura ===== */
+/* INTRO */
 
 #intro{
-
 position:fixed;
 inset:0;
-z-index:9999;
+background:#000;
 display:flex;
 justify-content:center;
 align-items:center;
-background:#000;
+flex-direction:column;
+z-index:9999;
 transition:opacity .8s;
-
 }
 
 #intro.hide{
-
 opacity:0;
 pointer-events:none;
-
 }
 
-.navio{
-
+.jolly{
 font-size:90px;
-animation:navio 2s ease forwards;
-
+animation:girar 2s ease;
 }
 
-@keyframes navio{
-
-0%{
-opacity:0;
-transform:translateX(-180px);
+@keyframes girar{
+0%{transform:scale(.5) rotate(-180deg);opacity:0;}
+100%{transform:scale(1) rotate(0);opacity:1;}
 }
 
-100%{
-opacity:1;
-transform:translateX(0);
+.intro-text{
+margin-top:20px;
+font-size:30px;
+font-weight:bold;
+color:#ff2d2d;
+text-shadow:0 0 20px red;
 }
 
-}
-
-/* ===== Página principal ===== */
+/* HERO */
 
 .hero{
-
 position:relative;
 height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
 overflow:hidden;
-
 }
 
 .bg{
-
 position:absolute;
 inset:0;
 background:
-linear-gradient(rgba(0,0,0,.35),rgba(0,0,0,.85)),
-url("https://images.unsplash.com/photo-1517404215738-15263e9f9178?q=80&w=1400&auto=format&fit=crop");
+linear-gradient(rgba(0,0,0,.35),rgba(0,0,0,.88)),
+url("assets/luffy-bg.webp");
 background-size:cover;
 background-position:center;
-filter:brightness(.55);
-
+filter:brightness(.6);
 }
 
-.flash{
+/* Relâmpagos */
 
+.flash{
 position:absolute;
 inset:0;
 background:
-radial-gradient(circle at 20% 20%,rgba(255,0,0,.25),transparent 35%),
-radial-gradient(circle at 80% 35%,rgba(255,0,0,.15),transparent 25%);
-animation:raio 2s infinite;
-
+radial-gradient(circle at 25% 20%,rgba(255,0,0,.25),transparent 30%),
+radial-gradient(circle at 80% 35%,rgba(255,0,0,.18),transparent 28%);
+animation:raio 2.2s infinite;
 }
 
 @keyframes raio{
-
-50%{
-opacity:.35;
-}
-
+50%{opacity:.35;}
 }
 
 /* Brasas */
 
 .embers{
-
 position:absolute;
 inset:0;
 overflow:hidden;
-
 }
 
 .embers span{
-
 position:absolute;
 bottom:-20px;
 width:6px;
 height:6px;
-background:#ff3d00;
+background:#ff4d00;
 border-radius:50%;
 animation:subir linear infinite;
-
 }
 
 @keyframes subir{
-
 0%{
 transform:translateY(0);
 opacity:1;
 }
-
 100%{
 transform:translateY(-110vh);
 opacity:0;
 }
-
 }
 
-.box{
+/* Caixa */
 
+.box{
 position:relative;
 z-index:5;
 width:92%;
-max-width:390px;
+max-width:400px;
 padding:30px;
-text-align:center;
 background:rgba(0,0,0,.42);
 backdrop-filter:blur(10px);
-border-radius:24px;
+border-radius:25px;
 border:1px solid rgba(255,0,0,.35);
-
+text-align:center;
 }
 
 .logo{
-
 font-size:46px;
 font-weight:bold;
 color:#ff2d2d;
-text-shadow:0 0 18px red;
+text-shadow:0 0 20px red;
 animation:acender 2s infinite alternate;
-
 }
 
 @keyframes acender{
-
-from{
-text-shadow:0 0 10px #800;
+from{text-shadow:0 0 10px #700;}
+to{text-shadow:0 0 30px red;}
 }
 
-to{
-text-shadow:0 0 28px red;
-}
-
-}
-
-p{
-
-font-size:19px;
-line-height:1.5;
-margin:25px 0;
+.box p{
+font-size:18px;
+line-height:1.6;
+margin:24px 0;
 color:#ddd;
-
 }
+
+/* Botões */
 
 .btn{
-
 display:block;
 padding:16px;
 margin:12px 0;
 border-radius:14px;
 text-decoration:none;
-font-size:19px;
+font-size:18px;
 font-weight:bold;
 color:white;
 transition:.3s;
-
 }
 
 .red{
-
 background:#d10000;
-
 }
 
 .red:hover{
-
 transform:scale(1.03);
-
 }
 
 .out{
-
 border:2px solid #ff2d2d;
-
 }
 
 .out:hover{
-
 background:#ff2d2d;
-
 }
 
 .contador{
-
 margin-top:18px;
-color:#ffaaaa;
+color:#ffb3b3;
 animation:pulse 1.5s infinite;
-
 }
 
 @keyframes pulse{
-
-50%{
-opacity:.5;
+50%{opacity:.5;}
 }
 
+/* MENU */
+
+.menu{
+position:fixed;
+left:-280px;
+top:0;
+width:260px;
+height:100%;
+background:#0b0b0b;
+padding:25px;
+display:flex;
+flex-direction:column;
+gap:18px;
+transition:.35s;
+z-index:6000;
+border-right:2px solid #7a0000;
 }
 
-/* Bússola escondida */
+.menu.show{
+left:0;
+}
+
+.menu-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+font-size:22px;
+font-weight:bold;
+color:#ff2d2d;
+margin-bottom:20px;
+}
+
+.menu a{
+text-decoration:none;
+color:white;
+padding:12px;
+border-radius:10px;
+}
+
+.menu a:hover{
+background:#d10000;
+}
+
+.menu-btn{
+position:fixed;
+top:18px;
+left:18px;
+width:50px;
+height:50px;
+border:none;
+border-radius:12px;
+background:#d10000;
+color:white;
+font-size:24px;
+z-index:7000;
+}
+
+.menu-header button{
+background:none;
+border:none;
+color:white;
+font-size:20px;
+}
+
+/* Bússola */
 
 .compass{
-
 position:fixed;
 bottom:18px;
 left:18px;
 font-size:34px;
 cursor:pointer;
-user-select:none;
+z-index:100;
 transition:.3s;
-z-index:50;
-
 }
 
 .compass:hover{
-
 transform:rotate(25deg);
+}
 
+/* Som */
+
+.sound{
+position:fixed;
+bottom:18px;
+right:18px;
+width:55px;
+height:55px;
+border-radius:50%;
+background:#d10000;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:24px;
+cursor:pointer;
+z-index:100;
+box-shadow:0 0 20px rgba(255,0,0,.5);
 }
 
 </style>
@@ -271,11 +304,34 @@ transform:rotate(25deg);
 
 <div id="intro">
 
-<div class="navio">
-🚢
+<div class="jolly">☠️</div>
+
+<div class="intro-text">
+PIRATE STORE
 </div>
 
 </div>
+
+<!-- MENU -->
+
+<div id="menu" class="menu">
+
+<div class="menu-header">
+
+🏴 Pirate Store
+
+<button id="closeMenu">✖</button>
+
+</div>
+
+<a href="index.html">⚓ Início</a>
+<a href="contas.html">📜 Contas</a>
+<a href="admin.html">📖 Livro do Capitão</a>
+<a href="ilha.html">🏝️ Ilha dos Imperadores</a>
+
+</div>
+
+<button id="openMenu" class="menu-btn">☰</button>
 
 <!-- HERO -->
 
@@ -294,9 +350,7 @@ PIRATE STORE
 </div>
 
 <p>
-
 Obrigado por participar da nossa jornada no rumo de venda de contas.
-
 </p>
 
 <a class="btn red"
@@ -314,30 +368,30 @@ href="contas.html">
 </a>
 
 <div class="contador">
-
 ⚓ 3 Tesouros aguardando um novo capitão.
-
 </div>
 
 </div>
 
 </section>
 
-<div class="compass" id="compass">
+<!-- BÚSSOLA -->
 
-🧭
+<div id="compass" class="compass">🧭</div>
 
-</div>
+<!-- BOTÃO DE SOM -->
+
+<div class="sound" id="sound">🔊</div>
 
 <script>
 
-// Intro
+/* Intro */
 
 setTimeout(()=>{
 document.getElementById("intro").classList.add("hide");
-},2000);
+},2200);
 
-// Brasas
+/* Brasas */
 
 const embers=document.getElementById("embers");
 
@@ -346,14 +400,24 @@ for(let i=0;i<35;i++){
 const e=document.createElement("span");
 
 e.style.left=Math.random()*100+"%";
-e.style.animationDuration=3+Math.random()*4+"s";
+
+e.style.animationDuration=(3+Math.random()*4)+"s";
+
 e.style.animationDelay=Math.random()*4+"s";
 
 embers.appendChild(e);
 
 }
 
-// Easter Egg
+/* Menu */
+
+const menu=document.getElementById("menu");
+
+document.getElementById("openMenu").onclick=()=>menu.classList.add("show");
+
+document.getElementById("closeMenu").onclick=()=>menu.classList.remove("show");
+
+/* Bússola secreta */
 
 let cliques=0;
 
@@ -361,11 +425,23 @@ document.getElementById("compass").onclick=()=>{
 
 cliques++;
 
-if(cliques===5){
+if(cliques>=5){
 
 window.location.href="ilha.html";
 
 }
+
+};
+
+/* Som */
+
+let ligado=false;
+
+document.getElementById("sound").onclick=function(){
+
+ligado=!ligado;
+
+this.innerHTML=ligado?"🔇":"🔊";
 
 };
 
